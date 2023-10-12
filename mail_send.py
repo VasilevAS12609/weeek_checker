@@ -1,6 +1,6 @@
 import smtplib
-from html import html
-from api_check import answer
+from html import html_draft
+from api_check import tasks
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -18,20 +18,21 @@ msg['To'] = receiver_email
 
 # Create the body of the message (a plain-text and an HTML version).
 html = ""
-for i in answer:
-    print(i.get('title'))
+for i in tasks:
+    html_i = html_draft(task_text=i.get('title'), step_date=i.get('date'))
+    html += html_i
 
 part = MIMEText(html, 'html')
 msg.attach(part)
 
-# try:
-#     # Отправка сообщения
-#     server.ehlo()
-#     server.starttls()
-#     server.login(sender_email, password)
-#     server.sendmail(sender_email, receiver_email, msg.as_string())
-#     print("Сообщение успешно отправлено!")
-# except Exception as e:
-#     print(f"Ошибка при отправке сообщения: {e}")
-# finally:
-#     server.quit()
+try:
+    # Отправка сообщения
+    server.ehlo()
+    server.starttls()
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, msg.as_string())
+    print("Сообщение успешно отправлено!")
+except Exception as e:
+    print(f"Ошибка при отправке сообщения: {e}")
+finally:
+    server.quit()

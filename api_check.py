@@ -23,3 +23,4 @@ if __name__ == "__main__":
     #     print(i.get('title'))
 
     pprint(tasks)
+    pprint(len(tasks))

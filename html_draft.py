@@ -1,5 +1,4 @@
 import datetime
-import time
 
 
 def html_draft(task_text, step_date):
@@ -7,7 +6,6 @@ def html_draft(task_text, step_date):
     colour_red = "red"
     step_date_colour = colour_main
     task_num = "Нет данных"
-    # task_text = "Нет данных"
     ait_exec = "Нет данных"
     ait_bt = "Нет данных"
     ait_volume = "Нет данных"
